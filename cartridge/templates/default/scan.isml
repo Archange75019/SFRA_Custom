@@ -1,0 +1,11 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/style.css');
+        assets.addJs('/js/scan.js');
+    </isscript>
+  <main>
+    <video id="video" autoplay playsinline data-scanUrl="${URLUtils.url('Scan-Search')}"></video>
+  </main>
+  <script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
+</isdecorate>
