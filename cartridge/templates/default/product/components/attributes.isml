@@ -1,0 +1,34 @@
+<isif condition="${product.attributes && product.attributes.length}">
+    <iscomment> <p>AA${JSON.stringify(product.attributes.ID)}</p>
+    <div class="col-sm-12 col-md-4 col-lg-3">
+        <button class="title btn text-left btn-block d-sm-none"
+                aria-expanded="false" aria-controls="collapsible-attributes-${loopState && loopState.count ? loopState.count : '1' }"
+        >
+            ${Resource.msg('label.attributes', 'product', null)}
+        </button>
+        <h2 class="title d-none d-sm-block">
+            ${Resource.msg('label.attributes', 'product', null)}
+        </h2>
+    </div> </iscomment>
+    <div class="col-sm-12 col-md-8 col-lg-9 value content" id="collapsible-attributes-${loopState && loopState.count ? loopState.count : '1' }">
+        <isloop items="${product.attributes}" var="attrGroup">
+            <isif condition="${attrGroup.ID !== 'mainAttributes'}">
+                <iscomment> <h3 class="attribute-name">
+                    ${attrGroup.name}
+                </h3>
+                <p>${JSON.stringify(attrGroup)} </p> </iscomment>
+                <ul>
+                    <isloop items="${attrGroup.attributes}" var="attr">
+                        <isif condition="${attr.label == 'LiveShopping'}">
+                            <isloop items="${attr.value}" var="value">
+                                <isif condition="${value}">
+                                <a href="${URLUtils.url('Lives-Show')}">Liens</a>
+                                </isif>
+                            </isloop>
+                        </isif>
+                    </isloop>
+                </ul>
+            </isif>
+        </isloop>
+    </div>
+</isif>
